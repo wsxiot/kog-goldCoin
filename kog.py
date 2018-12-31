@@ -5,7 +5,7 @@ from time import sleep
 # 设备分辨率
 device_x, device_y = 1280, 720
 
-# 时间间隔，单位秒：one()two_1()two_2()three()four()one
+# 时间间隔，单位秒，详情见./imgs目录：one(time)two_1(time)two_2(time)three(time)four(time)one
 step_wait = [30, 2, 150, 2, 10]
 
 # 刷金币次数
