@@ -8,7 +8,7 @@ device_x, device_y = 1280, 720
 
 # 时间间隔，单位秒：one(time)two(time)three(time)four(time)one
 # one，two，three，four是图片名，详情见./imgs目录
-step_wait = [30, 90, 2, 10]
+step_wait = [30, 150, 2, 10]
 
 # 刷金币次数
 repeat_times = 60
