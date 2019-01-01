@@ -5,8 +5,9 @@ from time import sleep
 # 设备分辨率
 device_x, device_y = 1280, 720
 
-# 时间间隔，单位秒，详情见./imgs目录：one(time)two_1(time)two_2(time)three(time)four(time)one
-step_wait = [30, 2, 150, 2, 10]
+# 时间间隔，单位秒：one(time)two(time)three(time)four(time)one
+# one，two，three，four是图片名，详情见./imgs目录
+step_wait = [30, 150, 2, 10]
 
 # 刷金币次数
 repeat_times = 60
@@ -25,29 +26,31 @@ def tap_screen(x, y):
     real_y = int(y / base_y * device_y)
     os.system('adb shell input tap {} {}'.format(real_x, real_y))
 
-def sleep_log(current_times, step):
-    for i in range(step_wait[step], 0, -1):
-        sleep(1)
-        logging.info('round #{} step #{} time down #{}'.format(current_times, step, i))
-
 def do_money_work(current_times):
-    logging.info('round #{}'.format(current_times))
                  
     # step one 0
     tap_screen(1466, 920)
-    sleep_log(current_times, 0)
+    for i in range(step_wait[0], 0, -1):
+        sleep(1)
+        logging.info('round #{} step #{} time down #{}'.format(current_times, 0, i))
     
-    # step two 1 2
-    sleep_log(current_times, 1)
-    sleep_log(current_times, 2)
+    # step two 1
+    for i in range(step_wait[1], 0, -1):
+        tap_screen(1860, 92)
+        sleep(1)
+        logging.info('round #{} step #{} time down #{}'.format(current_times, 1, i))
     
-    # step three 3
+    # step three 2
     tap_screen(960, 540)
-    sleep_log(current_times, 3)
+    for i in range(step_wait[2], 0, -1):
+        sleep(1)
+        logging.info('round #{} step #{} time down #{}'.format(current_times, 2, i))
     
-    # step four 4
+    # step four 3
     tap_screen(1606, 992)
-    sleep_log(current_times, 4)
+    for i in range(step_wait[3], 0, -1):
+        sleep(1)
+        logging.info('round #{} step #{} time down #{}'.format(current_times, 3, i))
 
 if __name__ == '__main__':
     for i in range(repeat_times):
