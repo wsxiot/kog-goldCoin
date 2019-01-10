@@ -4,11 +4,11 @@ import os
 from time import sleep
 # ---------------在此处设置参数--------
 # 设备分辨率
-device_x, device_y = 1280, 720
+device_x, device_y = 1920, 1080
 
-# 时间间隔，单位秒：one(time)two(time)three(time)four(time)one
-# one，two，three，four是图片名，详情见./imgs目录
-step_wait = [30, 150, 2, 10]
+# 时间间隔，单位秒：one(time)five(time)six(time)one
+# one，five，six是图片名，详情见./imgs目录
+step_wait = [180, 2, 10]
 
 # 刷金币次数
 repeat_times = 60
@@ -29,29 +29,23 @@ def tap_screen(x, y):
 
 def do_money_work(current_times):
                  
-    # step one 0
-    tap_screen(random.randint(1360,1600), random.randint(870,950)) # 闯关
-    for i in range(step_wait[0], 0, -1):
+    # click 闯关
+    tap_screen(random.randint(1360,1600), random.randint(870,950))
+    for i in range(step_wait[0]+random.randint(1,40), 0, -1):
         sleep(1)
         logging.info('round #{} step #{} time down #{}'.format(current_times, 0, i))
     
-    # step two 1
-    for i in range(step_wait[1], 0, -1):
+    # click 点击屏幕继续
+    tap_screen(random.randint(200,1720), random.randint(200,880))
+    for i in range(step_wait[1]+random.randint(1,5), 0, -1):
         sleep(1)
         logging.info('round #{} step #{} time down #{}'.format(current_times, 1, i))
     
-    # step three 2
-    for i in range(random.randint(1,30), 0, -1):
+    # click 再次挑战
+    tap_screen(random.randint(1470,1720), random.randint(950,1020))
+    for i in range(step_wait[2]+random.randint(1,6), 0, -1):
         sleep(1)
         logging.info('round #{} step #{} time down #{}'.format(current_times, 2, i))
-    tap_screen(random.randint(200,1720), random.randint(200,880)) # 点击屏幕继续
-    sleep(step_wait[2])
-    
-    # step four 3
-    tap_screen(random.randint(1470,1720), random.randint(950,1020)) # 再次挑战
-    for i in range(step_wait[3]+random.randint(1,6), 0, -1):
-        sleep(1)
-        logging.info('round #{} step #{} time down #{}'.format(current_times, 3, i))
 
 if __name__ == '__main__':
     for i in range(repeat_times):
